@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+<body>
+    <script>
+        function user(name,password,...rest) {
+            return {
+                name ,
+                password ,
+                rest,
+                greet(){
+document.write(`Hello ${name} your password is ${password} and ${rest}`)
+                }
+            }
+        }
+       const user1 =   user("Zakyboss","1234", "You work as a " ,"Fullstack Software Engineer")
+        console.log(user1.greet())
+
+
+// Trying Spread Operator with Arrays
+function giveMe4(a,b,c,d) {
+   console.log("a",a)
+   console.log("b",b)
+   console.log("c",c)
+   console.log("d",d)
+}
+const colors =["red","green","blue","orange"]
+
+    giveMe4(...colors)
+    
+
+
+    // let num = [1,2,3,4,5,6]
+    // let moreNum=[7,8,9,10,11,12]
+    // let numCombined=num.concat(moreNum)
+    // console.log(numCombined)
+
+// Another way to combine
+
+let num = [1,2,3,4,5,6]
+    let moreNum=[7,8,9,10,11,12]
+  let numCombined= [...num.concat(...moreNum)]
+  console.log(numCombined)
+
+
+  // Using objects 
+  const students = [
+    {
+        name: "Zakyboss",
+        age: 23,
+        address: "Mombasa",
+    },
+    {
+        name: "Henry",
+        age: 13,
+        address: "Nairobi",
+    },
+    {
+        name: "Juma",
+        age: 43,
+        address: "Kilifi",
+    }
+    // Add more students here if needed
+];
+
+// Function to get all student names
+function getAllStudentNames() {
+    const names = students.map(student => student.name);
+    return names;
+}
+
+// Get all student names
+const allStudentNames = getAllStudentNames();
+console.log(allStudentNames);
+
+    </script>
+</body>
+</html>

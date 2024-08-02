@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Find Method</title>
+</head>
+<body>
+    <script>    const students = [
+       student1= { name : 'John', age : 21} ,
+       student1= { name : 'James', age : 34} ,
+       student1= { name : 'Jerry', age : 23} ,
+       student1= { name : 'Junior', age : 41} ,
+       student1= { name : 'Jeje', age : 61} ,
+       student1= { name : 'Julius', age : 71} ,
+]
+const oldStudents= students.map(student => {
+    if (student.age >20){
+        return student
+    }
+})
+console.log(oldStudents)
+const dataFound = oldStudents.find(student => {
+    if ( student.name.startsWith("Je")){
+        return `${student.name} is ${student.age} years old `
+    }
+})
+console.log(`student ${dataFound.name} is ${dataFound.age} years old}`)
+</script>
+</body>
+</html>

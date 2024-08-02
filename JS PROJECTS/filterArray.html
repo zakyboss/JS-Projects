@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const songNames = ["Happy","Sad","Moonlight","sexy","closer","sticky","sorry","Fireball",
+    ]
+    const song = songNames.filter(function party(songs) {
+        
+    
+       const findSong = songs.startsWith("s")
+       return findSong
+    } 
+    )
+
+    console.log(song)
+    const computers=[
+        {ram : 8 , hdd : 100} ,
+        {ram : 16 , hdd : 200},
+        {ram : 32 , hdd : 300},
+        {ram : 64 , hdd : 400},
+        {ram : 128 , hdd : 500}
+    ]
+    const specs = computers.filter(specification => {
+        if (specification.ram > 16) {
+            return specification
+        }
+    }).map(specification => {
+        return `${specification.ram} GB RAM`
+    })
+    console.log(specs)
+
+    const people = [
+        {name : "John", age : 34},
+        {name : "Chris", age : 33 },
+        {name : "City", age : 20 },
+        {name : "Shanon", age : 21 },
+        {name : "Dorothy", age : 54 },
+        {name : "Dick", age : 12 },
+
+    ]
+    const oldPeople = people.filter(age=>{
+        if (age.age>20){
+            return age
+        }
+    }).map(age=>{
+        return` ${age.name}: is  ${age.age} years old `
+    })
+    console.log(oldPeople)
+      const words = ["Hello","Spicy Tuna","Disco","Drink", "Bicycle ","Garage","Magic","Hollywood","MerryGoroud","Environments"]
+const longWords = words.map(wording=>{
+ if(wording.length>5){
+ return wording
+
+}
+}).filter(wording=>{
+    return wording
+})
+console.log(longWords)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practising dom control</title>
+</head>
+<body>
+    <div id="form">
+<form action="login">
+    <label for="firstName">First Name</label>
+    <input type="text" placeholder="Please Enter Your First Name" id="fname">
+    
+    <label for="lastName">First Name</label>
+    <input type="text" placeholder="Please Enter Your Last Name" id="lname">
+    <button type="button" onclick="verifyCredentials()">Submit</button>
+
+</form>
+    </div>
+    <div id="popup" style="height: 400px; width: 480px;background-color: aqua; display: none;">
+        <h3 id="greetings">Hello My friend</h3>
+        
+        </div>
+
+    <script>
+        function verifyCredentials() {
+            let fname= document.getElementById("fname").value
+            let lname= document.getElementById("lname").value
+
+            if(fname &&lname ==""){
+                alert("Please Enter your First Name or Last Name")
+
+            } else {
+                document.getElementById("popup").style.display="block"
+                document.getElementById("greetings").innerHTML=`Hello ${fname} ${lname}`
+                document.getElementById("form").style.display="none"
+            }
+        }
+    </script>
+</body>
+</html>

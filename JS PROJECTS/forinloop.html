@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const student ={
+            name: "Zakyboss",
+            age : 21 ,
+            address:"London"
+        }
+        const {name}=student
+        console.log(name)
+
+        for (const key in student ){
+           console.log(student[key])
+        }
+
+
+        const arr =["One","Two","Three","Four","Five","Six","Seven","Eight"]
+
+const [a,b, ...c]= arr
+for (const key in c) {
+    console.log(c[key])
+}
+// console.log(c)
+
+        // for (const key in arr){
+        //     console.log(arr[key])
+        // }
+        const object ={
+            a:100 ,
+            b : 200 ,
+            c : 300
+
+        }
+        for (const list in object) {
+            console.log(`${list} : ${object[list]}`)
+        }
+        for (const number of arr) {
+            console.log(number)
+        } 
+//  const families= [ 
+//    family = {
+//  mother :"Hawa Sheikh",
+//  brother : "Mankey",
+//  sister1 : "Hafsa",
+//  sister2 : "Anisa",
+//  sister3 : "Khadijah",
+//  loveFamily(){
+//   for (const familyMember in family) {
+    
+//   }
+//     return `My Family members are ${family[familyMember]} `;
+//  }
+
+
+// }
+// ]
+// // const yah = family.loveFamily()
+// console.log(family.loveFamily())
+
+const socks = {
+    color: "",
+    brand: "",
+    making: "",
+    warranty: ""
+};
+
+const sockInfo = [["black", "white", "Orange", "Yellow"], "Balenciaga", "American", "5 years"];
+
+function combine() {
+    let result = "";
+    let sockDataIndex = 0;
+
+    for (const sockData in socks) {
+        socks[sockData] = sockInfo[sockDataIndex];
+        sockDataIndex++;
+    }
+
+    for (const sockData in socks) {
+        result += `${sockData}: ${socks[sockData]}\n`;
+    }
+
+    return result;
+}
+
+const result = combine();
+console.log(result);
+    </script>
+</body>
+</html>

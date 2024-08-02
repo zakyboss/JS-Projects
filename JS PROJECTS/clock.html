@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2 id="time">Time :</h2>
+    </div>
+    <script>
+        function updateTime() {
+            let currentTime = new Date();
+            let hrs = currentTime.getHours();
+            let mins = currentTime.getMinutes();
+            let secs = currentTime.getSeconds();
+            document.getElementById("time").innerHTML = `${hrs} : ${mins} : ${secs}`;
+        }
+        updateTime(); // Call it initially to avoid showing "Time :"
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

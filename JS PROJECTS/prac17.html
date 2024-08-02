@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terneary Operator</title>
+</head>
+<body>
+    <h2 id="greeting"></h2>
+    <div id="greeter">
+        <form action="login">
+            <label for="firstName">First Name</label>
+            <input type="text" placeholder="Please Enter Your First Name" id="fname">
+            <label for="lastName">Last Name</label>
+            <input type="text" placeholder="Please Enter Your Last Name" id="lname">
+            <button type="button" onclick="greeting()">Submit</button>
+        </form>
+    </div>
+
+    
+
+    <div id="loginInfo" style="display: none;">
+        <form action="login">
+            <label for="emailAddress">Email Address</label>
+            <input type="text" placeholder="Please Enter Your Email" id="email">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Please Enter Your Password" id="password">
+            <button type="button" onclick="credentials()">Submit</button>
+        </form>
+    </div>
+
+    <h2 id="message"></h2>
+
+    <script>
+        function greeting() {
+            let fname = document.getElementById("fname").value;
+            let lname = document.getElementById("lname").value;
+            console.log(`${fname} ${lname}`);
+            (fname === "" || lname === "") ? window.alert("Please Fill in the form") : (document.getElementById("greeting").innerHTML = `Hello ${fname} ${lname} Welcome`, document.getElementById("greeter").style.display = "none", document.getElementById("loginInfo").style.display = "block");
+        }
+    </script>
+
+    <script>
+        function credentials() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            // console.log(`${fname} ${lname}`);
+            (email.includes("@") && email.includes(".") && password.length >= 8) ? document.getElementById("message").innerHTML = `Login Successful` : window.alert("Please Fill in the form");
+            document.getElementById("loginInfo").style.display = "none";
+        }
+    </script>
+</body>
+</html>

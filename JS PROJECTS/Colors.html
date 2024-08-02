@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color changer </title>
+</head>
+<body>
+    <button type="button" onclick="changeColor()"> Change Color !</button>
+    <script>
+            const color = ["Orange", "Blue", "yellow", "grey","Gold" ]
+
+            let  i = 0;
+           
+
+        function changeColor(){
+
+    const body = document.body.style.backgroundColor=color[i]
+    i++
+    if (i==color.length)
+   i=0 ;
+        }
+    </script>
+</body>
+</html>

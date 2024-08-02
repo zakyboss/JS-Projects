@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Reduce Method</title>
+</head>
+<body>
+    <script>
+        // const numbers = [1,2,3,4,5,6,7,8,9,10]
+        // const sum = numbers.reduce((numA , numB) => {
+        //     console.log (numA)
+        //     // console.log (numB)
+
+        //     return  numA +numB
+        // } ,2)
+        // console.log(sum)
+        const people = [
+            {
+                name : 'Zak' ,
+                age : 21 ,
+                address: "London"
+            },
+            {
+                name : 'Henry' ,
+                age : 23 ,
+                address: "London"
+            },
+            {
+                name : 'Derrick' ,
+                age : 24 ,
+                address: "London"
+            },
+            {
+                name : 'James' ,
+                age : 23 ,
+                address: "London"
+            },
+        ]
+//         const sumation = people.map(age => {
+//    let i = 0 ;
+//    i = i + age.age
+//     return i
+//         }).reduce((last , current ) =>
+//         {
+//             return (current + last)
+//         }, 0)
+//         console.log(sumation)
+
+
+const oldestAge = people.reduce((previous, current) => {
+    if (current.age > previous){
+    return current.age
+
+    }else{
+        return previous
+    }
+}, 0);
+        console.log(oldestAge)
+    </script>
+</body>
+</html>

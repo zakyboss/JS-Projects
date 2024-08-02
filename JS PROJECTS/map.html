@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Map</title>
+</head>
+<body>
+<script>
+        const students= [
+   student1 = {
+    admission : 1200 ,
+name : "James Charagu",
+age : 25 ,
+location: "Germany" ,
+course : "Computer Science"
+
+   } ,
+   student2= {
+    admission : 1200 ,
+name : "Kevin Delmonte",
+age : 18 ,
+location: "Germany" ,
+course : "Computer Science"
+
+   } ,
+   student3 = {
+    admission : 1200 ,
+name : "James Charagu",
+age : 16 ,
+location: "Germany" ,
+course : "Computer Science"
+
+   } ,
+   student4 = {
+    admission : 1200 ,
+name : "James Charagu",
+age : 29 ,
+location: "Germany" ,
+course : "Computer Science"
+
+   } ,
+]
+
+const value2 = students[1]
+const {name} = value2
+console.log(name)
+
+
+const array1 = [
+    1,2 ,3 ,4 ,5 ,6
+]
+const double = array1.map(multiply => {
+if (multiply>2)
+{
+    console.log(multiply)
+}})
+console.log()
+        
+const employee = ["john", "Henry","biden","juma","billgates","jaden"]
+
+const upper = employee.map( name => {
+    console.log(name.substring(0 ,1).toUpperCase() + name.substring(1) )
+})
+
+
+const players = ["Jaden","Eric","Derrick","Chris","Canon","Cindy"]
+const cName = players.map(getName => {
+ if (getName.startsWith("C")){
+    return console.log(getName)
+ }
+} )
+   
+const random =[2,34,56,67,76]
+const multiplied = random.map(newNum => {
+     return  newNum
+
+})
+const [de , ...rest]=multiplied
+console.log(rest)
+JSON.parse(random)
+console.log(random)
+</script>
+</body>
+</html>

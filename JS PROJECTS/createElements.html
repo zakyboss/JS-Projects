@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div id="div">
+
+    </div>
+</head>
+<body>
+    <script>
+      let value=  document.querySelector("#div");
+      let h1= document.createElement("h1").textContent = "Hello World "+ "\n";
+      value.append(h1)
+    //  document.write(value)
+
+    let button = document.createElement("button").textContent="Submit"
+    value.append(button)
+
+    console.log(value)
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="Greetings"></h2>
+    <div id="form">
+<form action="login">
+<label for="firstName">First Name </label>
+<input type="text" placeholder="Please Enter Your First Name " id="fname">
+<label for="lastName">Last Name </label>
+<input type="text" placeholder="Please Enter Your Last Name " id="lname">
+<button type="button" onclick="greeting()">Submit</button>
+</form>
+
+</div>
+
+     <!-- PAYEE SECTION -->
+     <h2 id="payeeInfo"></h2>
+     <div id="yourPayee">
+ <form action="payee">
+ <label for="Salary">Gross Salary </label>
+ <input type="text" placeholder="Please Enter Your Gross Salary" id="grossSalary">
+ <label for="allowance">Gross Allowances </label>
+ <input type="text" placeholder="Please Enter Your Last Name " id="allowance">
+ <button type="button" onclick="payee()">Submit</button>
+ </form>
+            <!-- Login Js -->
+<script>
+    function greeting() {
+        let fname = document.getElementById("fname").value
+        let lname = document.getElementById("lname").value
+        if (fname && lname ==""){
+            alert("Please Enter Both Your Names")
+            
+        }else{
+            document.getElementById("Greetings").innerHTML = `Hello ${fname} ${lname} Welcome to our Website `
+        document.getElementById("form").style.display = "none"
+        
+        }
+    }
+</script>
+ 
+  <!-- Payee Js  -->
+    <script>
+    function payee() {
+        
+
+        let grossSalary = document.getElementById("grossSalary").value
+        let allowance = document.getElementById("allowance").value
+        let netSalary = (grossSalary + allowance)
+        if (netSalary < 0 ){
+            alert("Your Net Salary is Negative")
+        } else if (netSalary <= 10000){
+ document.getElementById("payeeInfo").innerHTML = ` Your net Salary is ${ netSalary * 5/100} `
+        }
+         else if (netSalary <= 25000){
+ document.getElementById("payeeInfo").innerHTML = ` Your net Salary is ${netSalary- netSalary * 7/100} `
+        }
+         else if (netSalary <= 50000){
+ document.getElementById("payeeInfo").innerHTML = ` Your net Salary is ${netSalary- netSalary * 9/100} `
+        }
+         else if (netSalary <= 75000){
+ document.getElementById("payeeInfo").innerHTML = ` Your net Salary is ${netSalary- netSalary * 11/100} `
+        }
+         else if (netSalary <= 100000){
+ document.getElementById("payeeInfo").innerHTML = ` Your net Salary is ${netSalary- netSalary * 13/100} `
+        }
+         else if (netSalary <= 125000){
+ document.getElementById("payeeInfo").innerHTML = ` Your net Salary is ${ netSalary- netSalary* 15/100} `
+        }
+ 
+
+//  document.getElementById("yourPayee").style.display = "none"
+
+    }
+    
+    </script>
+</body>
+</html>
