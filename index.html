@@ -88,7 +88,7 @@
     <button id="restartButton">Restart Game</button>
   </div>
 <script>
-    const X_CLASS = 'x';
+  const X_CLASS = 'x';
 const O_CLASS = 'o';
 const WINNING_COMBINATIONS = [
   [0, 1, 2],
@@ -101,33 +101,27 @@ const WINNING_COMBINATIONS = [
   [2, 4, 6]
 ];
 
-const cellElements = document.querySelectorAll('[data-cell]');
-const board = document.getElementById('board');
-const winningMessageElement = document.getElementById('winningMessage');
-const winningMessageTextElement = document.getElementById('winningMessageText');
-const restartButton = document.getElementById('restartButton');
+const $cellElements = $('[data-cell]');
+const $winningMessageElement = $('#winningMessage');
+const $winningMessageTextElement = $('#winningMessageText');
+const $restartButton = $('#restartButton');
 let oTurn;
 
 startGame();
 
-restartButton.addEventListener('click', startGame);
+$restartButton.on('click', startGame);
 
 function startGame() {
   oTurn = false;
-  cellElements.forEach(cell => {
-    cell.classList.remove(X_CLASS);
-    cell.classList.remove(O_CLASS);
-    cell.removeEventListener('click', handleClick);
-    cell.addEventListener('click', handleClick, { once: true });
-  });
+  $cellElements.removeClass(X_CLASS).removeClass(O_CLASS).off('click').on('click', handleClick);
   setBoardHoverClass();
-  winningMessageElement.style.display = 'none';
+  $winningMessageElement.hide();
 }
 
 function handleClick(e) {
-  const cell = e.target;
+  const $cell = $(e.target);
   const currentClass = oTurn ? O_CLASS : X_CLASS;
-  placeMark(cell, currentClass);
+  placeMark($cell, currentClass);
   if (checkWin(currentClass)) {
     endGame(false);
   } else if (isDraw()) {
@@ -140,21 +134,21 @@ function handleClick(e) {
 
 function endGame(draw) {
   if (draw) {
-    winningMessageTextElement.innerText = 'Draw!';
+    $winningMessageTextElement.text('Draw!');
   } else {
-    winningMessageTextElement.innerText = `${oTurn ? "O's" : "X's"} Wins!`;
+    $winningMessageTextElement.text(`${oTurn ? "O's" : "X's"} Wins!`);
   }
-  winningMessageElement.style.display = 'block';
+  $winningMessageElement.fadeIn();
 }
 
 function isDraw() {
-  return [...cellElements].every(cell => {
-    return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS);
+  return $cellElements.toArray().every(cell => {
+    return $(cell).hasClass(X_CLASS) || $(cell).hasClass(O_CLASS);
   });
 }
 
-function placeMark(cell, currentClass) {
-  cell.classList.add(currentClass);
+function placeMark($cell, currentClass) {
+  $cell.addClass(currentClass);
 }
 
 function swapTurns() {
@@ -162,19 +156,20 @@ function swapTurns() {
 }
 
 function setBoardHoverClass() {
-  board.classList.remove(X_CLASS);
-  board.classList.remove(O_CLASS);
+  $cellElements.each(function() {
+    $(this).removeClass(X_CLASS).removeClass(O_CLASS);
+  });
   if (oTurn) {
-    board.classList.add(O_CLASS);
+    $cellElements.addClass(O_CLASS);
   } else {
-    board.classList.add(X_CLASS);
+    $cellElements.addClass(X_CLASS);
   }
 }
 
 function checkWin(currentClass) {
   return WINNING_COMBINATIONS.some(combination => {
     return combination.every(index => {
-      return cellElements[index].classList.contains(currentClass);
+      return $cellElements.eq(index).hasClass(currentClass);
     });
   });
 }
