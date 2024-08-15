@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+    
+    .game-container {
+        text-align: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 10px;
+        margin: 20px 0;
+    }
+    
+    .cell {
+        background-color: #e9ecef;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .cell:hover {
+        background-color: #d1d1d1;
+    }
+    
+    #restartButton {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    #restartButton:hover {
+        background-color: #0056b3;
+    }
+    
+    .message {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>    
+</head>
+<body>
+    <div class="game-container">
+        <h1>Tic-Tac-Toe</h1>
+        <div class="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <button id="restartButton">Restart Game</button>
+        <p class="message" id="message"></p>
+    </div>
+    <script>
+    const cells = document.querySelectorAll('.cell');
+    const message = document.getElementById('message');
+    const restartButton = document.getElementById('restartButton');
+    let currentPlayer = 'X';
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let gameActive = true;
+    
+    const winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    
+    function handleCellPlayed(clickedCell, clickedCellIndex) {
+        board[clickedCellIndex] = currentPlayer;
+        clickedCell.innerHTML = currentPlayer;
+    }
+    
+    function handleResultValidation() {
+        let roundWon = false;
+        for (let i = 0; i < winningConditions.length; i++) {
+            const winCondition = winningConditions[i];
+            let a = board[winCondition[0]];
+            let b = board[winCondition[1]];
+            let c = board[winCondition[2]];
+            if (a === '' || b === '' || c === '') {
+                continue;
+            }
+            if (a === b && b === c) {
+                roundWon = true;
+                break;
+            }
+        }
+    
+        if (roundWon) {
+            message.innerHTML = `Player ${currentPlayer} has won!`;
+            gameActive = false;
+            return;
+        }
+    
+        let roundDraw = !board.includes('');
+        if (roundDraw) {
+            message.innerHTML = 'Game ended in a draw!';
+            gameActive = false;
+            return;
+        }
+    
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        message.innerHTML = `It's ${currentPlayer}'s turn`;
+    }
+    
+    function handleCellClick(clickedCellEvent) {
+        const clickedCell = clickedCellEvent.target;
+        const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+    
+        if (board[clickedCellIndex] !== '' || !gameActive) {
+            return;
+        }
+    
+        handleCellPlayed(clickedCell, clickedCellIndex);
+        handleResultValidation();
+    }
+    
+    function handleRestartGame() {
+        currentPlayer = 'X';
+        board = ['', '', '', '', '', '', '', '', ''];
+        gameActive = true;
+        message.innerHTML = `It's ${currentPlayer}'s turn`;
+        cells.forEach(cell => (cell.innerHTML = ''));
+    }
+    
+    cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+    restartButton.addEventListener('click', handleRestartGame);
+</script>    
+</body>
+</html>
