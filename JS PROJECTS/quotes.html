@@ -45,13 +45,27 @@
         .button:hover {
             background-color: #45a049;
         }
+        .like-dislike-container {
+            margin-top: 20px;
+        }
+        .like-button, .dislike-button {
+            background-color: #008CBA;
+            margin: 5px;
+        }
+        .like-button:hover, .dislike-button:hover {
+            background-color: #007bb5;
+        }
     </style>
 </head>
 <body>
     <div id="quote-container">
-        <h2> Quote of the day:</h2>
+        <h2>Quote of the day:</h2>
         <p id="quote"></p>
         <button class="button" onclick="generateQuote()">Generate Quote</button>
+        <div class="like-dislike-container">
+            <button class="button like-button" onclick="likeQuote()">Like</button>
+            <button class="button dislike-button" onclick="dislikeQuote()">Dislike</button>
+        </div>
         <br>
         <a href="https://wa.me/your-whatsapp-number" class="button" target="_blank">WhatsApp</a>
         <a href="https://www.instagram.com/your-instagram-handle/" class="button" target="_blank">Instagram</a>
@@ -67,6 +81,14 @@
                 .catch(error => {
                     console.error('Error fetching quote:', error);
                 });
+        }
+
+        function likeQuote() {
+            alert("You liked this quote!");
+        }
+
+        function dislikeQuote() {
+            alert("You disliked this quote.");
         }
     </script>
 </body>
