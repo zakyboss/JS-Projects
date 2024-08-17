@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheep Counting Game</title>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #87CEEB;
+    font-family: Arial, sans-serif;
+}
+
+#game {
+    text-align: center;
+}
+
+#sheep-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.sheep {
+    position: absolute;
+    width: 50px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#count {
+    font-size: 24px;
+    color: #333;
+}
+
+</style>
+</head>
+<body>
+    <div id="game">
+        <h1>Sheep Counting Game</h1>
+        <div id="sheep-container"></div>
+        <p>Counted Sheep: <span id="count">0</span></p>
+    </div>
+
+<script>
+    let sheepCount = 0;
+
+function addSheep() {
+    const sheepContainer = document.getElementById('sheep-container');
+    const sheep = document.createElement('img');
+    sheep.src = 'sheep.webp'; // Use a sheep image URL
+    sheep.className = 'sheep';
+    sheep.style.top = Math.random() * 80 + '%';
+    sheep.style.left = Math.random() * 80 + '%';
+    
+    sheep.addEventListener('click', () => {
+        sheepCount++;
+        document.getElementById('count').textContent = sheepCount;
+        sheep.style.transform = 'scale(1.5)';
+        setTimeout(() => {
+            sheep.remove();
+            if (sheepCount >= 10) {
+                alert('You have counted enough sheep! Time to sleep!');
+                sheepCount = 0;
+                document.getElementById('count').textContent = sheepCount;
+            }
+        }, 300);
+    });
+
+    sheepContainer.appendChild(sheep);
+}
+
+setInterval(addSheep, 2000);
+
+</script>
+</body>
+</html>
